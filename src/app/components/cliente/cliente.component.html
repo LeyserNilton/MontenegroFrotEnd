@@ -1,0 +1,72 @@
+<div class="form-cliente">
+    <h1>Formulario para clientes</h1>
+    <div class="conteiner">
+        <div class="row">
+            <div class="col s5">
+                <div class="card">
+                    <div class="card-content">
+                        <form #clienteForm="ngForm" (ngSubmit)="addCliente(clienteForm)">
+                            <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="cliente._id">
+                            <div class="raw">
+                                <div class="input-field col s12">
+                                    <label for=""> <strong>Nombre:</strong></label>
+                                    <input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="cliente.nombre" placeholder="Ingrese el nombre">
+                                </div>
+                                <div class="input-field col s12">
+                                    <label for=""> <strong> Apellido:</strong></label>
+                                    <input type="text" name="apellido" #apellido="ngModel" [(ngModel)]="cliente.apellido" placeholder="Ingrese los apellido">
+                                </div>
+                                <div class="input-field col s12">
+                                    <label for=""> <strong>Celular:</strong> </label>
+                                    <input type="text" name="celular" #celular="ngModel" [(ngModel)]="cliente.celular" placeholder="Ingrese numero de celular">
+                                </div>
+                                <div class="input-field col s12">
+                                    <label for=""> <strong>Correo:</strong></label>
+                                    <input type="text" name="correo" #correo="ngModel" [(ngModel)]="cliente.correo" placeholder="Ingrese su correo">
+                                </div>
+                                <div class="card-action">
+                                    <div class="input-field col s12">
+                                        <button class="btn right">Guardar</button>
+                                        <button class="btn right" (click)="limpiarForm(clienteForm)">Limpiar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col s7">
+                <h1 class="h2">Lista de Registros</h1>
+                <table>
+                    <thead>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Celular</th>
+                        <th>Correo</th>
+                        <th>Operaciones</th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let cliente of clientes">
+                            <td>{{cliente.nombre}}</td>
+                            <td>{{cliente.apellido}}</td>
+                            <td>{{cliente.celular}}</td>
+                            <td>{{cliente.correo}}</td>
+                            <td>
+                                <button>
+                                <a (click)="editarCliente(cliente)">
+                                    <i class="material-icons">edit</i>
+                                </a>
+                            </button>
+                                <button>
+                                <a (click)="eliminarCliente(cliente._id)">
+                                    <i class="material-icons">delete</i>
+                                </a>
+                            </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

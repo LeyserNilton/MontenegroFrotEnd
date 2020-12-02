@@ -1,0 +1,66 @@
+<div class="form-auto">
+    <h1>Formulario para autos</h1>
+    <div class="conteiner">
+        <div class="row">
+            <div class="col s5">
+                <div class="card">
+                    <div class="card-content">
+                        <form #autoForm="ngForm" (ngSubmit)="addAuto(autoForm)">
+                            <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="auto._id">
+                            <div class="raw">
+                                <div class="input-field col s12">
+                                    <label for=""> <strong>Marca:</strong></label>
+                                    <input type="text" name="Marca" #marca="ngModel" [(ngModel)]="auto.marca" placeholder="Ingresa la marca">
+                                </div>
+                                <div class="input-field col s12">
+                                    <label for=""> <strong>Modelo:</strong></label>
+                                    <input type="text" name="Modelo" #modelo="ngModel" [(ngModel)]="auto.modelo" placeholder="Ingresa el modelo">
+                                </div>
+                                <div class="input-field col s12">
+                                    <label for=""> <strong>Color:</strong></label>
+                                    <input type="text" name="Color" #color="ngModel" [(ngModel)]="auto.color" placeholder="Ingresa el color">
+                                </div>
+                                <div class="card-action">
+                                    <div class="input-field col s12">
+                                        <button class="btn right">Guardar</button>
+                                        <button class="btn right" (click)="limpiarForm(autoForm)">Limpiar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col s7">
+                <h1 class="h2">Lista de Registros</h1>
+                <table>
+                    <thead>
+                        <th>Marca</th>
+                        <th>Modelo</th>
+                        <th>Color</th>
+                        <th>Operaciones</th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let auto of autos">
+                            <td>{{auto.marca}}</td>
+                            <td>{{auto.modelo}}</td>
+                            <td>{{auto.color}}</td>
+                            <td>
+                                <button>
+                                <a (click)="editarAuto(auto)">
+                                    <i class="material-icons">edit</i>
+                                </a>
+                            </button>
+                                <button>
+                                <a (click)="eliminarAuto(auto._id)">
+                                    <i class="material-icons">delete</i>
+                                </a>
+                            </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
